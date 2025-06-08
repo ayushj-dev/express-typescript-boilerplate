@@ -15,7 +15,9 @@ dotenv.config({
   path: path.resolve(__dirname, `../../.env.${ENV}`)
 });
 
-
+/**
+ * This class uses singleton pattern
+ */
 export class AppConfig implements Config {
   private static instance: AppConfig;
 

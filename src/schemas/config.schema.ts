@@ -12,8 +12,8 @@ export const ConfigSchema = z.object({
     .regex(/^\d+$/, { message: ERRORS.ENV.PORT.REGEX })
     .transform(Number),
   DATABASE_URL: z.string().url(),
-  JWT_ACCESS_TOKEN_EXPIRY: z.string(),
-  JWT_REFRESH_TOKEN_EXPIRY: z.string(),
+  JWT_ACCESS_TOKEN_EXPIRY: z.string().min(1, ERRORS.ENV.JWT_EXPIRY).transform(Number),
+  JWT_REFRESH_TOKEN_EXPIRY: z.string().min(1, ERRORS.ENV.JWT_EXPIRY).transform(Number),
   JWT_ACCESS_TOKEN_SECRET: z.string().min(10, ERRORS.ENV.JWT_SECRET),
   JWT_REFRESH_TOKEN_SECRET: z.string().min(10, ERRORS.ENV.JWT_SECRET),
 });
