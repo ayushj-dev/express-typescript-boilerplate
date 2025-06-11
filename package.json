@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "NODE_ENV=development ts-node src/index.ts",
+    "dev": "NODE_ENV=development ts-node -r tsconfig-paths/register src/index.ts",
     "start:prod": "NODE_ENV=production npm run start",
     "start:test": "NODE_ENV=test npm run start",
     "generate-token": "ts-node scripts/jwt-secret-generator.ts",
@@ -23,6 +23,8 @@
     "iovalkey": "^0.3.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.1",
+    "pg": "^8.16.0",
+    "tsconfig-paths": "^4.2.0",
     "zod": "^3.25.51"
   },
   "devDependencies": {
@@ -32,6 +34,8 @@
     "@types/jsonwebtoken": "^9.0.9",
     "@types/multer": "^1.4.13",
     "@types/node": "^22.15.29",
+    "@types/pg": "^8.15.4",
+    "drizzle-kit": "^0.31.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }

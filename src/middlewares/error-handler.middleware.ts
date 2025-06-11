@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { HTTP_STATUS } from '../constants/http-status.constant';
-import { HttpError } from '../exceptions/base-exception';
-import { CONFIG } from '../config/config';
+import { HTTP_STATUS } from '@/constants/http-status.constant';
+import { HttpError } from '@/exceptions/base-exception';
+import { CONFIG } from '@/config/config';
 
 export const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   console.error(err);
@@ -13,6 +13,6 @@ export const errorHandler = (err: any, req: Request, res: Response, next: NextFu
   res.status(statusCode).json({
     success: false,
     message,
-    stack
+    error: stack
   });
 };

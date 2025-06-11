@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ConfigSchema } from "../schemas/config.schema";
+import { ConfigSchema } from "@/schemas/config.schema";
 
 type TConfig = z.infer<typeof ConfigSchema>;
 

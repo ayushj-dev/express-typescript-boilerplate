@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from "../constants/http-status.constant";
+import { HTTP_STATUS } from "@/constants/http-status.constant";
 import { HttpError } from "./base-exception";
 
 export class UnauthorizedError extends HttpError {

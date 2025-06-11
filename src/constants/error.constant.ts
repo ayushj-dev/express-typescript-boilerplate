@@ -5,6 +5,8 @@ export const ERRORS = {
     PORT: {
       LENGTH: "PORT must be exactly 4 characters long",
       REGEX: "PORT must contain only digits"
-    }
+    },
+    WINDOW_SIZE_IN_SECONDS: "WINDOW_SIZE_IN_SECONDS can only be a positive number greater than 0 without 0 padding",
+    MAX_REQUESTS: "MAX_REQUESTS can only be a positive number greater than 0 without 0 padding"
   }
 };

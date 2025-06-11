@@ -1,4 +1,5 @@
 export class HealthService {
+
   constructor() { }
 
   checkHealth() {

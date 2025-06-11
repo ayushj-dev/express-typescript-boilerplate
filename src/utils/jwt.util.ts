@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { CONFIG } from '../config/config';
+import { CONFIG } from '@/config/config';
 
 export const generateAccessToken = (payload: object): string => jwt.sign(payload, CONFIG.JWT_ACCESS_TOKEN_SECRET, { expiresIn: CONFIG.JWT_ACCESS_TOKEN_EXPIRY });
 
