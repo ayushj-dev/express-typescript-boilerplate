@@ -1,4 +1,4 @@
-export const ERRORS = {
+export const ERROR_CONSTANTS = {
   ENV: {
     JWT_SECRET: 'JWT_SECRET must be at least 10 characters long',
     JWT_EXPIRY: 'JWT_EXPIRY must be at least 1',

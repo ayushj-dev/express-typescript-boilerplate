@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { valkey } from '@/valkey/valkey-client';
+import { getValkeyInstance } from '@/valkey/valkey-client';
 import { CONFIG } from '@/config/config';
 import { TooManyRequestsError } from '@/exceptions/too-many-requests.exception';
+
+const valkey = getValkeyInstance();
 
 export const rateLimiter = async (req: Request, res: Response, next: NextFunction) => {
   const ip = req.ip;

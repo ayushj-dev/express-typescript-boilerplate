@@ -8,10 +8,11 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "NODE_ENV=development ts-node -r tsconfig-paths/register src/index.ts",
-    "start:prod": "NODE_ENV=production npm run start",
-    "start:test": "NODE_ENV=test npm run start",
-    "generate-token": "ts-node scripts/jwt-secret-generator.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha -r ts-node/esm tests/**/*.test.ts",
+    "prod": "NODE_ENV=production npm run start",
+    "db:generate": "npx drizzle-kit generate",
+    "db:migrate": "npx drizzle-kit migrate",
+    "generate-jwt-secret": "ts-node scripts/jwt-secret-generator.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",
@@ -22,20 +23,27 @@
     "helmet": "^8.1.0",
     "iovalkey": "^0.3.2",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.17.0",
     "multer": "^2.0.1",
     "pg": "^8.16.0",
     "tsconfig-paths": "^4.2.0",
     "zod": "^3.25.51"
   },
   "devDependencies": {
+    "@types/chai": "^5.2.2",
     "@types/cors": "^2.8.18",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.9",
+    "@types/mocha": "^10.0.10",
     "@types/multer": "^1.4.13",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.15.31",
     "@types/pg": "^8.15.4",
+    "@types/supertest": "^6.0.3",
+    "chai": "^5.2.0",
     "drizzle-kit": "^0.31.1",
+    "mocha": "^11.6.0",
+    "supertest": "^7.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }

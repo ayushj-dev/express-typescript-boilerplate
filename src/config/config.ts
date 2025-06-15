@@ -11,7 +11,8 @@ export class AppConfig implements Config {
 
   public readonly NODE_ENV: Config['NODE_ENV'];
   public readonly PORT: Config['PORT'];
-  public readonly DATABASE_URL: Config['DATABASE_URL'];
+  public readonly POSTGRES_URL: Config['POSTGRES_URL'];
+  public readonly MONGO_URL: Config['MONGO_URL'];
   public readonly JWT_ACCESS_TOKEN_EXPIRY: Config['JWT_ACCESS_TOKEN_EXPIRY'];
   public readonly JWT_REFRESH_TOKEN_EXPIRY: Config['JWT_REFRESH_TOKEN_EXPIRY'];
   public readonly JWT_ACCESS_TOKEN_SECRET: Config['JWT_ACCESS_TOKEN_SECRET'];
@@ -27,7 +28,8 @@ export class AppConfig implements Config {
   private constructor(env: Config) {
     this.NODE_ENV = env.NODE_ENV;
     this.PORT = env.PORT;
-    this.DATABASE_URL = env.DATABASE_URL;
+    this.POSTGRES_URL = env.POSTGRES_URL;
+    this.MONGO_URL = env.MONGO_URL;
     this.JWT_ACCESS_TOKEN_EXPIRY = env.JWT_ACCESS_TOKEN_EXPIRY;
     this.JWT_REFRESH_TOKEN_EXPIRY = env.JWT_REFRESH_TOKEN_EXPIRY;
     this.JWT_ACCESS_TOKEN_SECRET = env.JWT_ACCESS_TOKEN_SECRET;

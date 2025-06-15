@@ -13,11 +13,11 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000
 });
 
-let db: NodePgDatabase;
+let db: NodePgDatabase | null = null;
 
 /**
  * Function to get PG DB instance
- * 
+ *
  * NOTE: This always returns the same instance
  */
 export const getPostgresInstance = () => {

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
-import { HTTP_STATUS } from '@/constants/http-status.constant';
+import { HTTP_STATUS_CONSTANTS } from '@/constants/http-status.constant';
 
 export const validateSchema = (schema: ZodSchema<any>) => {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +19,7 @@ export const validateSchema = (schema: ZodSchema<any>) => {
     } catch (err) {
 
       if (err instanceof ZodError) {
-        res.status(HTTP_STATUS.BAD_REQUEST).json({
+        res.status(HTTP_STATUS_CONSTANTS.BAD_REQUEST).json({
           message: 'Bad Schema',
           error: err.errors,
         });

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { HTTP_STATUS } from '@/constants/http-status.constant';
+import { HTTP_STATUS_CONSTANTS } from '@/constants/http-status.constant';
 
 /**
  * Interface for the standardized response structure.
@@ -27,7 +27,7 @@ export const responseMiddleware = (req: Request, res: Response, next: NextFuncti
       message = body?.message ?? 'An unexpected error occurred';
       error = body;
       data = null;
-      res.statusCode = res.statusCode >= HTTP_STATUS.NOT_FOUND ? res.statusCode : HTTP_STATUS.INTERNAL_SERVER_ERROR;
+      res.statusCode = res.statusCode >= HTTP_STATUS_CONSTANTS.NOT_FOUND ? res.statusCode : HTTP_STATUS_CONSTANTS.INTERNAL_SERVER_ERROR;
     }
 
     else if (res.statusCode >= 400) {
