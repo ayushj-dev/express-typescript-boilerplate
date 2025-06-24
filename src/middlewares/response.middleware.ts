@@ -2,24 +2,32 @@ import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS_CONSTANTS } from '@/constants/http-status.constant';
 
 /**
+ * Standard API response
+ */
+type ApiResponse = {
+  meta: any;
+  result: any;
+} | null;
+
+/**
  * Interface for the standardized response structure.
  * This defines the consistent format for all API responses.
  */
-interface StandardizedResponse<T = any> {
+interface StandardizedResponse {
   success: boolean;
   status_code: number;
   message: string;
-  data?: T;
+  data?: ApiResponse;
   error?: any;
 }
 
 export const responseMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const originalJson = res.json;
 
-  res.json = function(body?: any): Response {
+  res.json = function (body?: any): Response {
     let success: boolean = true;
     let message: string = body?.message ?? 'Operation successful';
-    let data: any = body?.data ?? null;
+    let data: ApiResponse = body?.data ?? null;
     let error: any = null;
 
     if (body instanceof Error) {

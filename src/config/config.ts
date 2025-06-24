@@ -10,8 +10,17 @@ export class AppConfig implements Config {
   private static instance: AppConfig;
 
   public readonly NODE_ENV: Config['NODE_ENV'];
+  public readonly API_PREFIX: Config['API_PREFIX'];
   public readonly PORT: Config['PORT'];
   public readonly POSTGRES_URL: Config['POSTGRES_URL'];
+  public readonly POSTGRES_HOST: Config['POSTGRES_HOST'];
+  public readonly POSTGRES_PORT: Config['POSTGRES_PORT'];
+  public readonly POSTGRES_USER: Config['POSTGRES_USER'];
+  public readonly POSTGRES_PASSWORD: Config['POSTGRES_PASSWORD'];
+  public readonly POSTGRES_DATABASE: Config['POSTGRES_DATABASE'];
+  public readonly POSTGRES_MAX_POOL_CONNECTIONS: Config['POSTGRES_MAX_POOL_CONNECTIONS'];
+  public readonly POSTGRES_IDLE_TIMEOUT_MS: Config['POSTGRES_IDLE_TIMEOUT_MS'];
+  public readonly POSTGRES_CONNECTION_TIMEOUT_MS: Config['POSTGRES_CONNECTION_TIMEOUT_MS'];
   public readonly MONGO_URL: Config['MONGO_URL'];
   public readonly JWT_ACCESS_TOKEN_EXPIRY: Config['JWT_ACCESS_TOKEN_EXPIRY'];
   public readonly JWT_REFRESH_TOKEN_EXPIRY: Config['JWT_REFRESH_TOKEN_EXPIRY'];
@@ -26,16 +35,36 @@ export class AppConfig implements Config {
    * Private constructor to prevent direct instantiation
    */
   private constructor(env: Config) {
+    /* Express App related variables */
     this.NODE_ENV = env.NODE_ENV;
+    this.API_PREFIX = env.API_PREFIX;
     this.PORT = env.PORT;
+
+    /* SQL related varialbes */
     this.POSTGRES_URL = env.POSTGRES_URL;
+    this.POSTGRES_HOST = env.POSTGRES_HOST;
+    this.POSTGRES_PORT = env.POSTGRES_PORT;
+    this.POSTGRES_USER = env.POSTGRES_USER;
+    this.POSTGRES_PASSWORD = env.POSTGRES_PASSWORD;
+    this.POSTGRES_DATABASE = env.POSTGRES_DATABASE;
+    this.POSTGRES_MAX_POOL_CONNECTIONS = env.POSTGRES_MAX_POOL_CONNECTIONS;
+    this.POSTGRES_IDLE_TIMEOUT_MS = env.POSTGRES_IDLE_TIMEOUT_MS;
+    this.POSTGRES_CONNECTION_TIMEOUT_MS = env.POSTGRES_CONNECTION_TIMEOUT_MS;
+
+    /* NoSQL related varialbes */
     this.MONGO_URL = env.MONGO_URL;
+
+    /* JWT related varialbes */
     this.JWT_ACCESS_TOKEN_EXPIRY = env.JWT_ACCESS_TOKEN_EXPIRY;
     this.JWT_REFRESH_TOKEN_EXPIRY = env.JWT_REFRESH_TOKEN_EXPIRY;
     this.JWT_ACCESS_TOKEN_SECRET = env.JWT_ACCESS_TOKEN_SECRET;
     this.JWT_REFRESH_TOKEN_SECRET = env.JWT_REFRESH_TOKEN_SECRET;
+
+    /* Rate limiting related varialbes */
     this.WINDOW_SIZE_IN_SECONDS = env.WINDOW_SIZE_IN_SECONDS;
     this.MAX_REQUESTS = env.MAX_REQUESTS;
+
+    /* Valkey related varialbes */
     this.VALKEY_HOST = env.VALKEY_HOST;
     this.VALKEY_PORT = env.VALKEY_PORT;
   }

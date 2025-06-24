@@ -5,7 +5,7 @@ export class AuthController {
 
   constructor(private authService: AuthService) { }
 
-  async register(req: Request, res: Response, next: NextFunction) {
+  register = async (req: Request, res: Response, next: NextFunction) => {
     try {
       await this.authService.register(req.data);
     } catch (error) {
@@ -13,7 +13,7 @@ export class AuthController {
     }
   }
 
-  async login(req: Request, res: Response, next: NextFunction) {
+  login = async (req: Request, res: Response, next: NextFunction) => {
     try {
       await this.authService.login(req.data);
     } catch (error) {
@@ -21,7 +21,7 @@ export class AuthController {
     }
   }
 
-  async logout(req: Request, res: Response, next: NextFunction) {
+  logout = async (req: Request, res: Response, next: NextFunction) => {
     try {
       await this.authService.logout(req.data);
     } catch (error) {
@@ -29,7 +29,7 @@ export class AuthController {
     }
   }
 
-  async refreshAccess(req: Request, res: Response, next: NextFunction) {
+  refreshAccess = async (req: Request, res: Response, next: NextFunction) => {
     try {
       await this.authService.refreshAccess(req.data);
     } catch (error) {

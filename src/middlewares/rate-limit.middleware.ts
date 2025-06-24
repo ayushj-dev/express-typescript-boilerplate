@@ -5,6 +5,11 @@ import { TooManyRequestsError } from '@/exceptions/too-many-requests.exception';
 
 const valkey = getValkeyInstance();
 
+/**
+* Function to limit the number of requests a user can make in a given time period
+*
+* NOTE: This uses fixed window algorithm for rate limiting the user based on their IP address
+*/
 export const rateLimiter = async (req: Request, res: Response, next: NextFunction) => {
   const ip = req.ip;
   const key = `rate-limit:${ip}`;
