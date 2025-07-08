@@ -84,6 +84,7 @@ express-typescript-boilerplate/
 │   ├── valkey/        # Redis (valkey) integration, client and caching
 │   └── index.ts       # App entry point
 ├── .env.development   # Environment variables for development
+├── .env.test          # Environment variables for test
 ├── .gitignore         # Files to ignore in Git
 ├── LICENSE            # Project license
 ├── README.md          # Project overview and setup instructions
