@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS_CONSTANTS } from '@/constants/http-status.constant';
+import { logger } from '@/utils/logger.util';
 
 /**
  * Standard API response
@@ -56,6 +57,9 @@ export const responseMiddleware = (req: Request, res: Response, next: NextFuncti
       data,
       error
     };
+
+    /* Logging every response */
+    logger.info(standardizedResponse);
 
     // Call the original `res.json` method to send the standardized response.
     // We use `call(this, ...)` to ensure `this` context (which is `res`) is preserved.

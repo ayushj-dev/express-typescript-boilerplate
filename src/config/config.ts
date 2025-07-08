@@ -30,6 +30,7 @@ export class AppConfig implements Config {
   public readonly MAX_REQUESTS: Config['MAX_REQUESTS'];
   public readonly VALKEY_HOST: Config['VALKEY_HOST'];
   public readonly VALKEY_PORT: Config['VALKEY_PORT'];
+  public readonly LOG_LEVEL: Config['LOG_LEVEL'];
 
   /**
    * Private constructor to prevent direct instantiation
@@ -67,6 +68,9 @@ export class AppConfig implements Config {
     /* Valkey related varialbes */
     this.VALKEY_HOST = env.VALKEY_HOST;
     this.VALKEY_PORT = env.VALKEY_PORT;
+
+    /* Pino related variables */
+    this.LOG_LEVEL = env.LOG_LEVEL;
   }
 
   /**

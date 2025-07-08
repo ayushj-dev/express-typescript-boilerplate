@@ -47,5 +47,8 @@ export const ConfigSchema = z.object({
 
   /* Rate limiting related varialbes */
   WINDOW_SIZE_IN_SECONDS: z.string().regex(/^[1-9]\d*$/, ERROR_CONSTANTS.ENV.WINDOW_SIZE_IN_SECONDS).transform(Number),
-  MAX_REQUESTS: z.string().regex(/^[1-9]\d*$/, ERROR_CONSTANTS.ENV.MAX_REQUESTS).transform(Number)
+  MAX_REQUESTS: z.string().regex(/^[1-9]\d*$/, ERROR_CONSTANTS.ENV.MAX_REQUESTS).transform(Number),
+
+  /* Pino logger related varialbes */
+  LOG_LEVEL: z.custom<Level>()
 });

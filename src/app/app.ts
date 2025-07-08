@@ -18,6 +18,7 @@ import express from 'express';
 import routes from '@/routes';
 import { errorHandler } from "@/middlewares/error-handler.middleware";
 import { responseMiddleware } from "@/middlewares/response.middleware";
+import { requestMiddleware } from "@/middlewares/request.middleware";
 
 /**
 * Class use to create, initialize and get an express app instance.
@@ -48,6 +49,9 @@ class App {
 
     /* For parsing application/x-www-form-urlencoded */
     this.app.use(urlencoded({ extended: true }));
+
+    /* Request logger middleware to log requests */
+    this.app.use(requestMiddleware);
 
     /* Response middleware to standardize response structure */
     this.app.use(responseMiddleware);
