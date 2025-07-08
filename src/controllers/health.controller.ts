@@ -12,7 +12,10 @@ export class HealthController {
 
       res.status(HTTP_STATUS_CONSTANTS.OK).json({
         message: "Health fetched successfully!",
-        data: result
+        data: {
+          meta: {},
+          result
+        }
       });
     } catch (error) {
       next(error);
