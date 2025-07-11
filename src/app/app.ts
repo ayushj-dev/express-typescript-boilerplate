@@ -1,16 +1,5 @@
 /* Do not change the order of imports as it is crucial in order for app to work as expected */
 import { CONFIG } from "@/config/config";
-
-/**
- * Uncomment database imports once you have the actual database & env variables setup
- * These need to be called as soon as app boots so that if there is any error it is
- * caught as early as possible.
- *
- * NOTE: Importing db connection automatically connects to the DB
- */
-// import { db } from "@/db/sql/postgres";
-// import { mongo } from "@/db/no-sql/mongo";
-
 import { Application, json, urlencoded } from "express";
 import helmet from 'helmet';
 import cors from 'cors';

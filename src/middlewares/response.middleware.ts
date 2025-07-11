@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS_CONSTANTS } from '@/constants/http-status.constant';
 import { logger } from '@/utils/logger.util';
+import { API_CONSTANTS } from '@/constants/api.constant';
 
 /**
  * Standard API response
@@ -27,13 +28,13 @@ export const responseMiddleware = (req: Request, res: Response, next: NextFuncti
 
   res.json = function (body?: any): Response {
     let success: boolean = true;
-    let message: string = body?.message ?? 'Operation successful';
+    let message: string = body?.message ?? API_CONSTANTS.DEFAULT.SUCCESS_RESPONSE_MESSAGE;
     let data: ApiResponse = body?.data ?? null;
     let error: any = null;
 
     if (body instanceof Error) {
       success = false;
-      message = body?.message ?? 'An unexpected error occurred';
+      message = body?.message ?? API_CONSTANTS.DEFAULT.ERROR_RESPONSE_MESSAGE;
       error = body;
       data = null;
       res.statusCode = res.statusCode >= HTTP_STATUS_CONSTANTS.NOT_FOUND ? res.statusCode : HTTP_STATUS_CONSTANTS.INTERNAL_SERVER_ERROR;

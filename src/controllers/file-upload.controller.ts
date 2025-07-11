@@ -6,28 +6,32 @@ export class FileUploadController {
 
   constructor(private fileUploadService: FileUploadService) { }
 
-  uploadSingle = (req: Request, res: Response, next: NextFunction) => {
+  /**
+   * Controller to handle file upload
+   */
+  uploadSingle = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const result = await this.fileUploadService.uploadSingle(req.file);
+
       res.status(HTTP_STATUS_CONSTANTS.OK).json({
-        message: "Health fetched successfully!",
-        data: {
-          meta: {},
-          result: "File uploaded successfully"
-        }
+        message: "File uploaded successfully!",
+        data: result
       });
     } catch (error) {
       next(error);
     }
   }
 
-  uploadMultiple = (req: Request, res: Response, next: NextFunction) => {
+  /**
+   * Controller to handle multiple file upload
+   */
+  uploadMultiple = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const result = await this.fileUploadService.uploadMultiple(req.files);
+
       res.status(HTTP_STATUS_CONSTANTS.OK).json({
-        message: "Health fetched successfully!",
-        data: {
-          meta: {},
-          result: "Files uploaded successfully"
-        }
+        message: "Files uploaded successfully!",
+        data: result
       });
     } catch (error) {
       next(error);
