@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS_CONSTANTS } from '@/constants/http-status.constant';
 import { logger } from '@/utils/logger.util';
 import { API_CONSTANTS } from '@/constants/api.constant';
+import { getContext } from '@/context/context';
 
 /**
  * Standard API response
@@ -16,6 +17,7 @@ type ApiResponse = {
  * This defines the consistent format for all API responses.
  */
 interface StandardizedResponse {
+  request_id: string;
   success: boolean;
   status_code: number;
   message: string;
@@ -51,7 +53,10 @@ export const responseMiddleware = (req: Request, res: Response, next: NextFuncti
       }
     }
 
+    const requestId = getContext('requestId') as string;
+
     const standardizedResponse: StandardizedResponse = {
+      request_id: requestId,
       success,
       status_code: res.statusCode,
       message,
